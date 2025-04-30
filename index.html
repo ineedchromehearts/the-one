@@ -1,0 +1,445 @@
+<!-- Full HTML Code with the Added Wireframe Slide -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shahaad Sutton | Portfolio</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --nardo-grey: #A3A3A3;
+      --black: #000000;
+      --msu-green: #18453B;
+      --hover-green: #13372E;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--nardo-grey);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--msu-green);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      width: 150px;
+      height: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 1.5rem;
+    }
+
+    nav ul li a {
+      background: var(--white);
+      color: var(--msu-green);
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: 'DM Serif Display', serif;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: var(--hover-green);
+      color: var(--white);
+    }
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+      padding-top: 6rem;
+      background: url('Shahaad_Sutton.jpg') center/cover no-repeat;
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero img {
+      width: 500px;
+      height: auto;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-family: 'DM Serif Display', serif;
+    }
+
+    .section {
+      padding: 5rem 4rem;
+      display: none;
+      animation: fadeIn 0.6s ease-in-out forwards;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+    }
+
+    .mySlides {
+      display: none;
+      text-align: center;
+    }
+
+    .mySlides img {
+      width: 800px;
+      height: 750px;
+      max-height: 80vh;
+      object-fit: contain;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .caption {
+      color: var(--black);
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 100px;
+      margin-top: 1rem;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: #18453B;
+      font-weight: bold;
+      font-size: 50px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      background-color: #ffffff(0,0,0,0.5);
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .about-left, .about-right {
+      flex: 1;
+      min-width: 280px;
+      max-width: 500px;
+    }
+
+    .about-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .about-img {
+      width: 60%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .about-right {
+      flex: 1;
+      padding-left: 2rem;
+      font-size: 1.25rem;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--msu-green);
+      color: var(--white);
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-buttons a {
+      background-color: var(--white);
+      color: var(--msu-green);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 5px;
+      font-family: 'DM Serif Display', serif;
+      transition: background 0.3s;
+    }
+
+    .social-buttons a:hover {
+      background-color: var(--hover-green);
+      color: var(--white);
+    }
+
+    @media (max-width: 768px) {
+      .about-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-left, .about-right {
+        min-width: 100%;
+        max-width: 100%;
+      }
+
+      .slideshow-container {
+        max-width: 100%;
+      }
+
+      .about-right {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="images/header.png" alt="Logo" class="logo">
+  <nav>
+    <ul>
+      <li><a href="#home" onclick="showSection('home')">Home</a></li>
+      <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
+      <li><a href="#resume" onclick="showSection('resume')">Resume</a></li>
+      <li><a href="#about" onclick="showSection('about')">About Me</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="home" class="section active">
+  <div class="hero">
+    <div>
+      <img src="images/Untitled design.png" alt="Logo" class="logo">
+      <p>Hi, I’m Shahaad Sutton, an aspiring Experience Architect and Product Designer with a passion for blending creativity and technology. This portfolio is a snapshot of my journey, showcasing my diverse range of projects, from graphic design and web development to UX research and creative problem solving.
+
+        Explore my work and discover how I approach design challenges to create intuitive, user-friendly experiences. Whether it's crafting compelling websites or working on impactful client projects, my goal is to bring ideas to life in the most thoughtful and engaging way.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <div class="section-content">
+    <h2>Projects</h2>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img src="images/XA 242 Project 2 Deliverable, Group 3.jpg" alt="Accessibility Infographic" onclick="openModal(this)">
+        <div class="caption">Accessibility Infographic project focused on features of spartan stadium(complaints,pictures), ADA compliance + research, and how people interact with the space. Also,improvements that can be made</div>
+      </div>
+      <div class="mySlides fade">
+        <img src="images/abroad program.jpg" alt="Client Project from XA 242" onclick="openModal(this)">
+        <div class="caption">Client project from XA 242: Our mission was to attract current/prospective students and alumni and create a site that will make them want to enroll in the program, as well as revisit the site more than once. We did this by using our user research skills to make sure that the site reflects the users’ desires.</div>
+      </div>
+      <div class="mySlides fade">
+        <img src="images/Shahaad Sutton Website.jpg" alt="Homepage Mockup - Graphic Design Class" onclick="openModal(this)">
+        <div class="caption">Homepage mockup for a Planned Parenthood design, highlighting visual hierarchy and UX.</div>
+      </div>
+      <div class="mySlides fade">
+        <img src="images/GD mobile app wireframe.jpg" alt="Mobile App Wireframe - Graphic Design Class" onclick="openModal(this)">
+        <div class="caption">Planned Parenthood mobile app wireframe mockup from my graphic design class.</div>
+      </div>
+      <div class="mySlides fade">
+        <img src="images/art painting.jpg" alt="8th Grade Painting" onclick="openModal(this)">
+        <div class="caption">This was a painting from an 8th grade BHM art show that me and a couple others painted.</div>
+      </div>
+      <div class="mySlides fade">
+        <img src="images/SuttonS_Logo.jpg" alt="Planned Parenthood Logo" onclick="openModal(this)">
+        <div class="caption">Planned Parenthood logo design created during my graphic design class for a non-profit organziation.</div>
+      </div>
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+</section>
+
+<div id="imgModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<section id="resume" class="section">
+  <div class="section-content" style="text-align: center;">
+    <h2>Resume</h2>
+    <p style="margin: 1rem 0;">You can view my resume by clicking the link below:</p>
+    <p>
+      <a href="https://docs.google.com/document/d/18EiFpkIT6JIUBKKiu2FVkMkanAp1GybszucC9svNAEE/edit?tab=t.0" 
+         target="_blank" 
+         style="color: var(--white); font-weight: bold; background: var(--msu-green); padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block;">
+         View My Resume
+      </a>
+    </p>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="section-content">
+    <h2>About Me</h2>
+    <div class="about-section">
+      <div class="about-left">
+        <img src="images/headshot.jpg" alt="Headshot" class="about-img">
+        <img src="images/art award.jpg" alt="Art Award" class="about-img">
+        <img src="images/Untitled Notebook-2.jpg" alt="Sketches" class="about-img">
+      </div>
+      <div class="about-right">
+        <p>From a young age, I’ve had a strong passion for drawing and sketching, which sparked my interest in design and creativity. Over time, that passion evolved into a dedication to crafting user-centered digital experiences that are both functional and visually engaging.
+
+          As an aspiring Experience Architect and Product Designer, I focus on UX research, web development, and creative problem-solving. My background includes working on a wide range of projects—from branding and graphic design to collaborative client work—where I’ve developed a strong understanding of how thoughtful design can improve everyday interactions.
+          
+          This portfolio showcases my growth as a designer and my commitment to creating intuitive, impactful solutions.
+          Let’s connect: I’m always open to new opportunities, collaborations, and conversations that spark innovation and growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="social-buttons">
+    <a href="https://www.linkedin.com/in/shahaad-sutton" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/wavyy.shahaad" target="_blank">Instagram</a>
+  </div>
+  <p>&copy; 2025 Shahaad Sutton. All rights reserved.</p>
+</footer>
+
+<script>
+  function showSection(sectionId) {
+  document.querySelectorAll('.section').forEach(section => {
+    section.classList.remove('active');
+  });
+  document.getElementById(sectionId).classList.add('active');
+
+  // Scroll to top of the page
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function showSlides(n) {
+    const slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+  }
+
+  function openModal(img) {
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = img.src;
+  }
+
+  function closeModal() {
+    document.getElementById("imgModal").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
